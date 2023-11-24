@@ -2,6 +2,7 @@ import 'package:burger/constants/images.dart';
 import 'package:burger/screens/my_app.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key});
@@ -86,7 +87,10 @@ class OnBoardingPage extends StatelessWidget {
                           style: const TextStyle(
                             color: Color.fromRGBO(4, 176, 53, 1),
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () {},
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              _launchURL();
+                            },
                         ),
                         const TextSpan(
                           text: ' and ',
@@ -97,7 +101,10 @@ class OnBoardingPage extends StatelessWidget {
                           style: const TextStyle(
                             color: Color.fromRGBO(4, 176, 53, 1),
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () {},
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              _launchURL();
+                            },
                         ),
                         TextSpan(
                           text: '\n Restore',
@@ -116,5 +123,12 @@ class OnBoardingPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+_launchURL() async {
+  final Uri url = Uri.parse('https://google.com');
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
   }
 }

@@ -3,6 +3,7 @@ import 'package:burger/constants/images.dart';
 import 'package:burger/models/category_product.dart';
 import 'package:burger/providers/cart_provider.dart';
 import 'package:burger/screens/qr_screen.dart';
+import 'package:burger/screens/qr_screen_new.dart';
 import 'package:burger/screens/shopping_empty_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,17 +17,17 @@ class ShoppingCard extends StatelessWidget {
     var cart = context.watch<CartModel>();
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 40,
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Container(
-            padding: const EdgeInsets.only(left: 10),
-            child: SvgPicture.asset(
-              AppImages.chevron,
-              color: Colors.grey,
-            ),
-          ),
-        ),
+        // leadingWidth: 40,
+        // leading: GestureDetector(
+        //   // onTap: () => Navigator.pop(context),
+        //   child: Container(
+        //     padding: const EdgeInsets.only(left: 10),
+        //     child: SvgPicture.asset(
+        //       AppImages.chevron,
+        //       color: Colors.grey,
+        //     ),
+        //   ),
+        // ),
         backgroundColor: bgColor,
         elevation: 0,
         title: Container(
@@ -292,7 +293,7 @@ class InfoCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ShoppingCardEmpty(),
+                  builder: (context) => const NewQrPage(),
                 ),
               );
             },
